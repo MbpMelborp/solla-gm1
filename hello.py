@@ -1,5 +1,7 @@
 from flask import Flask
 from markupsafe import escape
+import wsgiserver
+
 app = Flask(__name__)
 
 
@@ -32,4 +34,9 @@ def show_subpath(subpath):
 
 
 if __name__ == "__main__":
-    app.run(debug=False, host='0.0.0.0')
+    # Debug/Development
+    # app.run(debug=True, host="0.0.0.0", port="5000")
+    # Production
+    http_server = wsgiserver.WSGIServer(app, host='0.0.0.0', port=5000)
+    http_server.start()
+    # app.run(debug=False, host='0.0.0.0')
