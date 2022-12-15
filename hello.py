@@ -29,3 +29,7 @@ def show_post(post_id):
 def show_subpath(subpath):
     # show the subpath after /path/
     return f'Subpath {escape(subpath)}'
+
+
+if __name__ == "__main__":
+    app.run(debug=False, host='0.0.0.0')
